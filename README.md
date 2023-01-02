@@ -31,3 +31,34 @@ An LSTM layer ```nn.LSTM``` in PyTorch consists of four different "gates", which
 - The "memory cell" stores the relevant parts of the input and the previous state.
 
 At each time step, the LSTM layer takes in an input x and the previous hidden state h and updates the hidden state based on these gates and the memory cell. The updated hidden state is then output and used as the input to the next time step.
+
+
+<br>
+
+## How to run this code
+
+You'll need [Git](https://git-scm.com) to be installed on your computer.
+```
+# Clone this repository
+$ git clone https://github.com/natasabrisudova/Review_Classification
+```
+
+
+To try the model run in command prompt:
+```
+$ predict.py ReviewToBeClassified
+```
+
+For example:
+
+```
+$ predict.py I love this movie
+
+# Review: I love this movie 
+# Classification: Positive
+```
+
+
+
+
+
