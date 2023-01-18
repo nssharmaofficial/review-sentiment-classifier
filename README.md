@@ -1,5 +1,8 @@
 # Review_Classification_IMDB
 
+![](https://api.visitorbadge.io/api/VisitorHit?user=natasabrisudova&repo=Review_Classification-&countColor=%237B1E7A)
+
+
 Assignment for sentiment classification of the reviews from IMDB dataset on the Kaggle: https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews
  
 ## Classifier
