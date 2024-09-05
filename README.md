@@ -1,67 +1,82 @@
-# Review_Classification_IMDB
+# Review sentiment classifier
 
-![](https://api.visitorbadge.io/api/VisitorHit?user=natasabrisudova&repo=Review_Classification-&countColor=%237B1E7A)
+A sentiment classifier built using PyTorch and LSTM. This project is designed to classify movie reviews as either positive or negative based on their sentiment.
 
+## Overview
 
-Assignment for sentiment classification of the reviews from IMDB dataset: https://ai.stanford.edu/~amaas/data/sentiment/
- 
-## Classifier
+The Sentiment Classifier uses a Long Short-Term Memory (LSTM) network to process sequences of word indices and determine the sentiment of a review. It includes modules for data processing, model training, and evaluation.
 
-The classifier ```SentimentClassifier() ``` consists of:
-```python
-self.emblayer = nn.Embedding(self.config.VOC_SIZE, self.config.EMBED_SIZE)
-self.lstmlayer = nn.LSTM(self.config.EMBED_SIZE, self.config.HIDDEN_SIZE ,batch_first=True)
-self.linear1 = nn.Linear(self.config.HIDDEN_SIZE, 32)
-self.relu = nn.ReLU()
-self.linear2 = nn.Linear(32, 2)
-```
-### Embedding layer
+## Data
 
-The ```nn.Embedding``` layer in PyTorch is a layer that maps discrete categorical variables to continuous vector representations, known as "embeddings". It is commonly used in natural language processing and other text-based tasks to represent words as dense, continuous vectors, which are easier to work with than the one-hot encoded representations that are commonly used as inputs to traditional neural networks.
+Reviews from [IMDB dataset](https://ai.stanford.edu/~amaas/data/sentiment/)
 
-This model takes in a batch of sequences of word indices of shape ```(batch_size, seq_length)``` and passes them through the embedding layer to produce a batch of sequences of word embeddings of shape ```(batch_size, seq_length, embedding_dim)```. 
+## Features
 
+- **Sentiment classification**: Classifies reviews into positive or negative sentiment
+- **Data handling**: Processes and loads movie review data
+- **Vocabulary building**: Constructs and saves a vocabulary for mapping words to indices
+- **Model training**: Trains an LSTM model for sentiment analysis
+- **Evaluation**: Evaluates the model and plots training and validation losses and accuracies
 
-### LSTM layer
+## File structure
 
-Long Short-Term Memory (LSTM) is a type of recurrent neural network (RNN) that is able to capture long-term dependencies in sequential data. It is called "long short-term memory" because it can remember information for long periods of time, but it is also able to forget irrelevant information and keep the most important information.
+- `config.py`: Contains configuration settings for the model.
+- `classifier.py`: Defines the `SentimentClassifier` model.
+- `dataset.py`: Contains the `MyDataset` class for handling data.
+- `utils.py`: Utility functions for data processing, vocabulary handling, and accuracy calculation.
+- `train.py`: Script to train the model.
+- `predict.py`: Script to make predictions on new reviews.
+- `saved/`: Directory for saving models and vocabulary.
 
-An LSTM layer ```nn.LSTM``` in PyTorch consists of four different "gates", which control the flow of information into and out of the memory cell:
+## Installation
 
-- The "input gate" determines which parts of the input to store in the memory cell.
-- The "forget gate" determines which parts of the previous state to forget.
-- The "output gate" determines which parts of the previous state to output.
-- The "memory cell" stores the relevant parts of the input and the previous state.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/sentiment-classifier.git
+    ```
+2. Navigate into the project directory:
+    ```bash
+    cd sentiment-classifier
+    ```
+3. Install the required dependencies:
+    ```bash
+    pip install torch torchvision torchtext matplotlib
+    ```
 
-At each time step, the LSTM layer takes in an input x and the previous hidden state h and updates the hidden state based on these gates and the memory cell. The updated hidden state is then output and used as the input to the next time step.
+## Usage
 
+### Training the Model
 
-<br>
-
-## How to run this code
-
-You'll need [Git](https://git-scm.com) to be installed on your computer.
-```
-# Clone this repository
-$ git clone https://github.com/natasabrisudova/Review_Classification
-```
-
-
-To try the model run in command prompt:
-```
-$ predict.py ReviewToBeClassified
-```
-
-For example:
-
-```
-$ predict.py I love this movie
-
-# Review: I love this movie 
-# Classification: Positive
+To train the model, run the following command:
+```bash
+python train.py
 ```
 
+This will:
+1. Load training and testing data.
+2. Build or load the vocabulary.
+3. Train the model and save the best-performing model.
+4. Plot and save training and validation losses and accuracies.
 
+### Making Predictions
 
+To classify a review, use the `predict.py` script. Provide the review text as a command-line argument:
+
+```bash
+python predict.py "This movie was absolutely fantastic!"
+```
+
+This will output the classification of the review as either `Positive` or `Negative`.
+
+## Configuration
+
+Configuration settings are located in `config.py`. You can adjust parameters such as vocabulary size, embedding dimension, hidden size, and learning rate.
+
+## Requirements
+
+- Python 3.7+
+- PyTorch
+- TorchText
+- Matplotlib
 
 
