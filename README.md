@@ -1,10 +1,6 @@
 # Review sentiment classifier
 
-A sentiment classifier built using PyTorch and LSTM. This project is designed to classify movie reviews as either positive or negative based on their sentiment.
-
-## Overview
-
-The Sentiment Classifier uses a Long Short-Term Memory (LSTM) network to process sequences of word indices and determine the sentiment of a review. It includes modules for data processing, model training, and evaluation.
+The sentiment classifier uses a Long Short-Term Memory (LSTM) network to process sequences of word indices and determine the sentiment of a review. It includes modules for data processing, model training, and evaluation.
 
 ## Data
 
